@@ -31,5 +31,19 @@ df <- df |>
   )
 
 
+ggplot2::ggplot(df,
+                ggplot2::aes(
+                  x = log10(gdp_per_capita),
+                  y = log10(co2_per_capita),
+                  color = region,
+                  size = population
+                )
+                ) +
+  ggplot2::geom_point(
+    alpha = 0.5
+  ) +
+  ggplot2::scale_x_continuous(
+    breaks = c("1000","10000","100000")
+  )
 
 
