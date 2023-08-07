@@ -43,7 +43,21 @@ ggplot2::ggplot(df,
     alpha = 0.5
   ) +
   ggplot2::scale_x_continuous(
-    breaks = c("1000","10000","100000")
-  )
+    breaks = c(log10(1000), log10(10000), log10(100000)),
+    labels = c("1000", "10000", "100000")
+  ) +
+  ggplot2::scale_y_continuous(
+    breaks = c(log10(0.1), log10(1), log10(10)),
+    labels = c("0.1", "1", "10")
+  ) +
+  ggplot2::labs(
+    x = "GDP per capita (USD)",
+    y = "CO2 per capita (tons)",
+    title = "CO2 per capita vs. GDP per capita, 2015"
+  ) +
+  ggplot2::theme_bw() +
+  ggplot2::geom_text(ggplot2::aes(label = iso_code,
+                                  size = 6)) +
+  ggplot2::guides(size = "none")
 
 
